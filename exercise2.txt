@@ -1,7 +1,10 @@
 UNF: 	DB(staffNo, dentistName, patientNo, patientName, Appointment, surgeryNo)
 UNF: 	DB(staffNo, dentistName, *patientNo*, patientName, *Date*, *time*, surgeryNo)
-2NF, 3NF & BCNF:	Surgery(staffNo, *patientNo*, *Date*, *time*, surgeryNo)
- 					Dentist(*staffNo*, dentistName)
-					Patient(*patientNo*, patientName)
-
-		
+2NF:	Surgery(staffNo, dentistName, *patientNo*, *Date*, *time*, surgeryNo)
+		Patient(*patientNo*, patientName)
+3NF:	Surgery(staffNo, *patientNo*, *Date*, *time*, surgeryNo)
+		Patient(*patientNo*, patientName)
+		Dentist(*staffNo*, dentistName)
+BCNF: 	Surgery(staffNo, *patientNo*, *Date*, *time*, surgeryNo)
+		Patient(*patientNo*, patientName)
+		Dentist(*staffNo*, dentistName)
