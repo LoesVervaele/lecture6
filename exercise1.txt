@@ -1,0 +1,3 @@
+first I created a repository called "lecture6" on github
+git clone https://github.com/NicolasVnk/lecture6.git lecture6
+gedit exercise1.txt
