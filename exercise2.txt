@@ -1,4 +1,4 @@
-UNF: 	DB(staffNo, dentistName, patientNo, patientName, Date, time, surgeryNo)
+UNF: 	DB(staffNo, dentistName, patientNo, patientName, Appointment, surgeryNo)
 UNF: 	DB(staffNo, dentistName, *patientNo*, patientName, *Date*, *time*, surgeryNo)
 2NF, 3NF & BCNF:	Surgery(staffNo, *patientNo*, *Date*, *time*, surgeryNo)
  					Dentist(*staffNo*, dentistName)
