@@ -19,5 +19,5 @@ curl 'https://rest.ensembl.org/archive/id' -H 'Content-type:application/json' \
 -H 'Accept:application/json' -X POST -d '{ "id" : ["ENSG00000002587", "ENSG00000003056"] }'
 
 6.
-curl 'https://rest.ensembl.org/sequence/region/human/X:35182..35432:1?' -H 'Content-type:text/plain'
+curl 'https://rest.ensembl.org/sequence/region/human/7:35182..35432:1?' -H 'Content-type:text/plain'
 
