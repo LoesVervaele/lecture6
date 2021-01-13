@@ -1,0 +1,21 @@
+Changing the years to 2021: 
+update booking set datefrom = date_add(datefrom, interval 1 year);
+update booking set dateto = date_add(dateto, interval 1 year);
+
+
+1. select guestname, guestaddress from guest where guestaddress like "%london%" order by guestname;
+2. select * from room where (type = "double" or type = "family") and price < 40.00 order by price;
+3. select * from booking where dateto is NULL;
+4. select avg(price) as average_price from room;
+5. select type, sum(price) as total_revenue from room where type = "double";
+6. select count(distinct guestno) from booking where (datefrom <= "2021-08-01" and dateto >= "2021-08-01") or (datefrom >= "2021-08-01" and datefrom <= "2021-08-31");
+7. select price, type from room join hotel on  room.hotelno = hotel.hotelno where hotelname = "The Tower Hotel";
+8. select guestname from booking join guest on guest.guestno = booking.guestno join hotel on hotel.hotelno = booking.hotelno where hotelname = "The Tower Hotel" and datefrom < "2021-01-13" and dateto > "2021-01-13";
+9. select type, price, guestname from room join hotel on hotel.hotelno = room.hotelno join booking on booking.roomno = room.roomno join guest on booking.guestno = guest.guestno where hotelname = "The Tower Hotel" and datefrom < "2021-01-13" and dateto > "2021-01-13";
+10. select sum(price) from room join hotel on hotel.hotelno = room.hotelno join booking on booking.roomno = room.roomno where hotelname = "The Tower Hotel" and datefrom < "2021-01-13" and dateto > "2021-01-13";
+11. select distinct(room.roomno) as roomno from room join hotel on hotel.hotelno = room.hotelno join booking on booking.roomno = room.roomno where hotelname = "The Tower Hotel" and ((datefrom > "2021-01-13" and dateto >
+"2021-01-13") or (datefrom < "2021-01-13" and dateto < "2021-01-13"));
+12. select sum(price) as income_lost from room join hotel on hotel.hotelno = room.hotelno join booking on booking.roomno = room.roomno where hotelname = "The Tower Hotel" and ((datefrom > "2021-01-13" and dateto > "2021-01-13") or (datefrom < "2021-01-13" and dateto < "2021-01-13"));
+13. select count(*) as number_of_rooms, hotelname from room join hotel on room.hotelno = hotel.hotelno where city="london" group by hotelname;
+14. select * from (select count(type) as bookings, type, hotelname from booking join room on booking.roomno = room.roomno join hotel on hotel.hotelno = booking.hotelno where city="london" group by hotelname, type order by count(type) desc) as sel1 group by hotelname order by bookings desc;
+15. update room set price = price*1.05;
