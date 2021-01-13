@@ -1,0 +1,18 @@
+1. select stdFirstName, stdLastName, stdCity, stdGPA from student where stdGPA >= 3.7;
+2. select FacFirstName, FacLastName, FacHireDate from faculty where FacHireDate between "1999-01-01" and "2000-12-31";
+3. select FacSSN, OfferNo, CourseNo from offering where (OffTerm = "fall" and OffYear = "2005") or (OffTerm = "winter" and OffYear = "2006");
+4. select OfferNo, offering.CourseNo, OffDays, OffTime from offering join course on offering.CourseNo
+= course.CourseNo where (crsDesc like "%database%" or crsDesc like "%programming%") and OffTerm = "spring" and OffYear = "2006";
+5. select OfferNo, CourseNo, FacFirstName, FacLastName from offering join faculty on offering.FacSSN = faculty.FacSSN where FacRank = "asst" and OffTerm = "fall" and OffYear = "2005" and courseNo like "IS%";
+6. select stdMajor, avg(stdGPA) from student group by stdMajor;
+7. select OffYear, count(distinct(CourseNo)), count(OfferNo) from offering group by OffYear;
+8. select avg(stdGPA), stdMajor, stdClass from student where stdGPA > 3.1 group by stdMajor, stdClass
+having (stdClass = "JR" or stdClass = "SR");
+9. select stdMajor, stdClass, min(stdGPA), max(stdGPA) from student group by stdMajor, stdClass;
+10. select crsDesc, course.CourseNo, count(*) from course join offering on course.CourseNo = offering.CourseNo where course.CourseNo like "IS%" group by crsDesc;
+11. select stdGPA, stdFirstName, stdLastName, stdCity, stdState from student where stdClass = "JR" order by stdGPA;
+12. select FacCity, FacState from faculty group by FacCity, FacState;
+13. select stdFirstName, stdLastName, offering.OfferNo, EnrGrade from enrollment join student on student.stdSSN = enrollment.StdSSN join offering on offering.OfferNo = enrollment.OfferNo where EnrGrade >= 3.5;
+14. select distinct(concat(stdFirstName, " ", stdLastName)) from enrollment join student on student.stdSSN = enrollment.StdSSN join offering on offering.OfferNo = enrollment.OfferNo where EnrGrade >= 3.5;
+15. select offering.OfferNo, CourseNo, OffDays, OffLocation, OffTime, FacFirstName, FacLastName from student join enrollment on enrollment.StdSSN = student.stdSSN join offering on offering.OfferNo = enrollment.OfferNo join faculty on faculty.FacSSN = offering.FacSSN where stdFirstName = "Bob" and stdLastName = "Norbert" and OffTerm = "spring" and OffYear = "2006";
+
